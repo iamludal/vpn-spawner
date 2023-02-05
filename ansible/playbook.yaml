@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: true
+  vars:
+    user_home: '{{ lookup("env", "HOME") }}'
+    install_script: /tmp/openvpn-install.sh
+  tasks:
+    - name: Check if install script exists
+      stat: path={{ install_script }}
+      register: install_script_stat
+
+    - name: Download install script
+      shell: curl -sL https://git.io/vpn -o {{ install_script }}
+      when: not install_script_stat.stat.exists
+
+    - name: Add execute permission to install script
+      shell: chmod +x {{ install_script }}
+
+    - name: Install expect
+      apt: name=expect state=present
+
+    - name: Copy expect script to remote machine
+      copy: src={{ playbook_dir }}/script.exp dest=/tmp/script.exp mode=0755
+
+    - name: Run install script
+      shell: /tmp/script.exp {{ install_script }}
+      args:
+        creates: /etc/openvpn/server/server.conf
+
+    - name: Copy client config to local machine
+      fetch: src=/root/client.ovpn dest={{ user_home }}/client.ovpn flat=yes

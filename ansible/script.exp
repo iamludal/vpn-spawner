@@ -1,0 +1,25 @@
+#!/usr/bin/expect -f
+
+set script [lindex $argv 0]
+
+spawn $script
+
+expect "What is the public IPv4 address or hostname?"
+send -- "\r"
+
+expect "Which protocol should OpenVPN use?"
+send -- "\r"
+
+expect "What port should OpenVPN listen to?"
+send -- "\r"
+
+expect "Select a DNS server for the clients:"
+send -- "2\r"
+
+expect "Enter a name for the first client:"
+send -- "\r"
+
+expect "Press any key to continue..."
+send -- "\r"
+
+expect eof
