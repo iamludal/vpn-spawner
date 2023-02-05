@@ -2,6 +2,8 @@
 
 set script [lindex $argv 0]
 
+set timeout -1
+
 spawn $script
 
 expect "What is the public IPv4 address or hostname?"
