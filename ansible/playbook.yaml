@@ -10,11 +10,11 @@
       register: install_script_stat
 
     - name: Download install script
-      shell: curl -sL https://git.io/vpn -o {{ install_script }}
+      get_url:
+        url: https://git.io/vpn
+        dest: "{{ install_script }}"
+        mode: 0755
       when: not install_script_stat.stat.exists
-
-    - name: Add execute permission to install script
-      shell: chmod +x {{ install_script }}
 
     - name: Install expect
       apt: name=expect state=present
