@@ -19,3 +19,5 @@ while ! ssh -i ${ssh_key_path} -o ConnectTimeout=1 -o StrictHostKeyChecking=no u
 done
 
 ansible-playbook ansible/playbook.yaml -i user@${ip_address}, --private-key ${ssh_key_path}
+
+echo "Done! Configuration file: ~/client.ovpn"
