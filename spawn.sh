@@ -2,6 +2,8 @@
 
 gcloud_project_id=TODO
 
+set -e
+
 terraform -chdir=terraform init
 
 terraform -chdir=terraform apply -auto-approve -var project_id=${gcloud_project_id}
