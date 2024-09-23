@@ -28,4 +28,4 @@
         creates: /etc/openvpn/server/server.conf
 
     - name: Copy client config to local machine
-      fetch: src=/root/client.ovpn dest={{ user_home }}/client.ovpn flat=yes
+      fetch: src=/root/client.ovpn dest={{ lookup('env', 'PWD') }}/client.ovpn flat=yes
