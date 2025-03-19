@@ -12,7 +12,7 @@ send -- "\r"
 expect "Which protocol should OpenVPN use?"
 send -- "\r"
 
-expect "What port should OpenVPN listen to?"
+expect "What port should OpenVPN listen on?"
 send -- "\r"
 
 expect "Select a DNS server for the clients:"
