@@ -4,12 +4,12 @@ variable "project_id" {
 
 variable "region" {
   type    = string
-  default = "europe-west1"
+  default = "europe-west9"
 }
 
 variable "zone" {
   type    = string
-  default = "europe-west1-b"
+  default = "europe-west9-b"
 }
 
 variable "ssh_user" {

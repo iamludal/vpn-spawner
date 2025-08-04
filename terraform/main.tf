@@ -11,7 +11,7 @@ resource "local_file" "ssh_private_key" {
 
 resource "google_compute_instance" "vpn" {
   name         = "vpn"
-  machine_type = "f1-micro"
+  machine_type = "e2-micro"
   zone         = var.zone
 
   boot_disk {
