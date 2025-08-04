@@ -3,3 +3,4 @@ ssh_key
 **/terraform.tfstate.backup
 **/.terraform
 client.ovpn
+.envrc
